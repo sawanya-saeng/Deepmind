@@ -89,10 +89,10 @@ class _PlayPage extends State<PlayPage> {
                         child: GridView.count(
                           physics: NeverScrollableScrollPhysics(),
                           padding: EdgeInsets.only(
-                              top: 20, left: 50, right: 50, bottom: 50),
+                              top: 70, left: 30, right: 30),
                           crossAxisCount: 2,
-                          mainAxisSpacing: 20,
-                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
                           children: List.generate(4, (index) {
                             return Container(
                               child: Stack(

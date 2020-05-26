@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "444677416135",
+    "firebase_url": "https://deepmind-36ea0.firebaseio.com",
+    "project_id": "deepmind-36ea0",
+    "storage_bucket": "deepmind-36ea0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444677416135:android:ed3b8a4a29cbcc108f4ae2",
+        "android_client_info": {
+          "package_name": "com.sawanya.deepmind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444677416135-4bc7kq2i2p8vmn76q7alubq0hvga1jvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcUGAmdlAYz6wkrS6BxgVm1akY7p3uztY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444677416135-4bc7kq2i2p8vmn76q7alubq0hvga1jvg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "444677416135-fb4oiq7f725pgbp433o3oqsjs19vatnt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sawanya.deepmind"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

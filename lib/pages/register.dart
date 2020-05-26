@@ -1,5 +1,6 @@
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'login.dart';
 
@@ -13,6 +14,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double _safeTop = MediaQuery.of(context).padding.top;
@@ -20,7 +24,8 @@ class _RegisterPage extends State<RegisterPage> {
 
     final UserProvider userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
-      body: Container(
+      resizeToAvoidBottomPadding: false,
+      body: userProvider.addLoading() ? CircularProgressIndicator(): Container(
         color: Color(0xff11BCB5),
         child: Column(
           children: <Widget>[
@@ -91,6 +96,8 @@ class _RegisterPage extends State<RegisterPage> {
                                  ),
                               height: 45,
                               child: TextField(
+                                keyboardType: TextInputType.emailAddress,
+                                controller: username,
                                 decoration: InputDecoration.collapsed(hintText: ""),
                               ),
                             ),
@@ -130,6 +137,8 @@ class _RegisterPage extends State<RegisterPage> {
                               ),
                               height: 45,
                               child: TextField(
+                                controller: password,
+                                obscureText: true,
                                 decoration: InputDecoration.collapsed(hintText: ""),
                               ),
                             ),
@@ -144,7 +153,11 @@ class _RegisterPage extends State<RegisterPage> {
 
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                        userProvider.setAddLoading(true);
+                        userProvider.register(username.text, password.text).then((value) {
+                          userProvider.setAddLoading(false);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                        });
                       },
                       child: Container(
                           decoration: BoxDecoration(

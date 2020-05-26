@@ -29,24 +29,28 @@ class _PlayPage extends State<PlayPage> {
       "title": "อยาก",
       "primary": 0xff0062ff,
       "optional": 0xff0049bf,
+      "point": 1
     },
     {
       "name": "red",
       "title": "โทสะ",
       "primary": 0xffe01d1d,
       "optional": 0xffb41111,
+      "point": 2
     },
     {
       "name": "green",
       "title": "หลง",
       "primary": 0xff51d300,
       "optional": 0xff3ea001,
+      "point": 3
     },
     {
       "name": "yellow",
       "title": "รู้",
       "primary": 0xffffb100,
       "optional": 0xffc38905,
+      "point": 4
     }
   ];
 
@@ -100,9 +104,9 @@ class _PlayPage extends State<PlayPage> {
                                 children: <Widget>[
                                   GestureDetector(
                                     onTap: () {
-                                      if (!playProvider.getNumberStatus(buttons[index]["name"])) {
-                                        playProvider.setNumberStatus(
-                                            buttons[index]["name"], true);
+                                      if (!playProvider.getNumberStatus(buttons[index]["name"]) && playProvider.isPlay()) {
+                                        playProvider.setNumberStatus(buttons[index]["name"], true);
+                                        playProvider.addPoint(buttons[index]["point"]);
                                         new Timer(new Duration(seconds: 1), () {playProvider.setNumberStatus(
                                               buttons[index]["name"], false);
                                         });
@@ -138,7 +142,7 @@ class _PlayPage extends State<PlayPage> {
                                           color: Colors.white,
                                         ),
                                         child: Text(
-                                          "+1",
+                                          "+${buttons[index]["point"]}",
                                           style: TextStyle(fontSize: 40),
                                         ),
                                       ),
@@ -158,6 +162,7 @@ class _PlayPage extends State<PlayPage> {
                           children: <Widget>[
                             !playProvider.isPlay() ? GestureDetector(
                               onTap: () {
+                                playProvider.reset();
                                 playProvider.play();
                               },
                               child: Container(
@@ -215,7 +220,7 @@ class _PlayPage extends State<PlayPage> {
                                                         height: 150,
                                                         alignment: Alignment.center,
                                                         child: Text(
-                                                          '20',
+                                                          playProvider.getScore().toString(),
                                                           style: TextStyle(
                                                               color: Colors.white,
                                                               fontSize: 80),
@@ -224,6 +229,7 @@ class _PlayPage extends State<PlayPage> {
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
+                                                    playProvider.reset();
                                                     Navigator.of(context).pop();
                                                   },
                                                   child: Container(
@@ -254,7 +260,7 @@ class _PlayPage extends State<PlayPage> {
                                       width: 250,
                                       alignment: Alignment.center,
                                       child: Text(
-                                        '${remaining}',
+                                        remaining,
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 30),
                                       ));

@@ -4,6 +4,7 @@ class PlayProvider extends ChangeNotifier {
   Map<String, dynamic> game = {
     'status': false,
     'time': Duration(minutes: 2),
+    'score': 0
   };
 
   Map<String, bool> numberStatus = {
@@ -54,5 +55,18 @@ class PlayProvider extends ChangeNotifier {
 
   Duration getCountdown() {
     return this.game['time'];
+  }
+
+  void addPoint(int point) {
+    this.game['score'] += point;
+    notifyListeners();
+  }
+
+  void reset() {
+    this.game['score'] = 0;
+  }
+
+  int getScore() {
+    return this.game['score'];
   }
 }

@@ -1,4 +1,5 @@
 import 'package:deepmind/pages/play.dart';
+import 'package:deepmind/providers/PlayProvider.dart';
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _pageController = PageController();
+    _currentIndex = 0;
   }
 
   @override
@@ -31,6 +33,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double _safeTop = MediaQuery.of(context).padding.top;
     double _safeBottom = MediaQuery.of(context).padding.bottom;
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+    final PlayProvider playProvider = Provider.of<PlayProvider>(context);
 
     return Scaffold(
       body: Container(
@@ -99,6 +103,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
+                          playProvider.stop();
                            setState(() {
                              _currentIndex = 1;
                              if (_pageController.hasClients) {

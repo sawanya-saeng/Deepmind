@@ -1,3 +1,4 @@
+import 'package:deepmind/pages/other.dart';
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -104,7 +105,7 @@ class _EditprofilePage extends State<EditprofilePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                                builder: (context) => OtherPage()));
                       },
                       child: Container(
                           decoration: BoxDecoration(

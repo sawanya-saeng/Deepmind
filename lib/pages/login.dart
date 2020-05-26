@@ -49,7 +49,7 @@ class _LoginPage extends State<LoginPage> {
                             border: Border.all(color: Colors.white),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30))),
-                        height: 40,
+                        height: 50,
                         width: 300,
                         alignment: Alignment.centerLeft,
                         child: Row(
@@ -63,7 +63,9 @@ class _LoginPage extends State<LoginPage> {
                             Expanded(
                               child: Container(
                                 padding: EdgeInsets.only(left: 15),
-                                child: TextField(decoration: InputDecoration(
+                                height: 30,
+                                child: TextField(decoration: InputDecoration( hintText: "ชื่อผู้ใช้", hintStyle: TextStyle(color: Color(0xffA1EFEB), fontSize: 16),
+                                  border: InputBorder.none ,contentPadding: EdgeInsets.only(top: 10,bottom: 10)
                                   // Added this
                                 ),
                                 style: TextStyle(color: Colors.white, fontSize: 16),
@@ -75,30 +77,37 @@ class _LoginPage extends State<LoginPage> {
                           ],
                         )),
                     Container(
-                      height: 30,
+                      height: 20,
                     ),
                     Container(
                         decoration: BoxDecoration(
                             color: Color(0xff11BCB5),
                             border: Border.all(color: Colors.white),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
-                        height: 40,
+                            BorderRadius.all(Radius.circular(30))),
+                        height: 50,
                         width: 300,
                         alignment: Alignment.centerLeft,
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Container(
                               padding: EdgeInsets.only(left: 15),
                               child: Image.asset('assets/password.png'),
                               height: 30,
                             ),
-                            Container(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Text(
-                                'รหัสผ่าน',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 19),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.only(left: 15),
+                                height: 30,
+                                child: TextField(decoration: InputDecoration( hintText: "รหัสผ่าน", hintStyle: TextStyle(color: Color(0xffA1EFEB), fontSize: 16),
+                                    border: InputBorder.none ,contentPadding: EdgeInsets.only(top: 10,bottom: 10)
+                                  // Added this
+                                ),
+                                  style: TextStyle(color: Colors.white, fontSize: 16),
+
+
+                                ),
                               ),
                             ),
                           ],

@@ -248,8 +248,7 @@ class _OtherPage extends State<OtherPage> {
                                                     Expanded(
                                                       flex: 1,
                                                       child: Container(
-                                                        alignment:
-                                                            Alignment.center,
+                                                        alignment: Alignment.center,
                                                         padding:
                                                             EdgeInsets.only(
                                                                 left: 15),

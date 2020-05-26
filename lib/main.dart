@@ -1,4 +1,5 @@
 import 'package:deepmind/pages/login.dart';
+import 'package:deepmind/providers/PlayProvider.dart';
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,9 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-         ChangeNotifierProvider<UserProvider>.value(value: UserProvider(
-
-         ))
+          ChangeNotifierProvider<UserProvider>.value(value: UserProvider()) ,
+          ChangeNotifierProvider<PlayProvider>.value(value: PlayProvider())
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

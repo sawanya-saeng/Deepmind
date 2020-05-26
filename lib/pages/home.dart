@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Expanded(
                 child: PageView(
+                  physics: NeverScrollableScrollPhysics(),
                   controller: _pageController,
                   children: <Widget>[
                     PlayPage(),
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 15),
+                padding: EdgeInsets.all(15),
                 color: Color(0xff11BCB5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                                 ? Color(0xff00746F)
                                 : Color(0xff11BCB5),
                           ),
-                          height: 65,
+                          height: 55,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -124,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                 ? Color(0xff00746F)
                                 : Color(0xff11BCB5),
                           ),
-                          height: 65,
+                          height: 55,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[

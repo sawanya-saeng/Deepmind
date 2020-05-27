@@ -14,6 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 TextEditingController _username = new TextEditingController();
+TextEditingController _password = new TextEditingController();
 
 class _LoginPage extends State<LoginPage> {
   @override
@@ -69,7 +70,7 @@ class _LoginPage extends State<LoginPage> {
                                   // Added this
                                 ),
                                 style: TextStyle(color: Colors.white, fontSize: 16),
-
+                                  controller: _username,
 
                                 ),
                               ),
@@ -105,8 +106,7 @@ class _LoginPage extends State<LoginPage> {
                                   // Added this
                                 ),
                                   style: TextStyle(color: Colors.white, fontSize: 16),
-
-
+                                  controller: _password,
                                 ),
                               ),
                             ),
@@ -117,7 +117,9 @@ class _LoginPage extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(0)) );
+                        userProvider.login(_username.text, _password.text).then((value) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(0)) );
+                        });
                       },
 
                       child: Container(

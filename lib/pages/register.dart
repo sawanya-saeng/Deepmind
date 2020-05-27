@@ -1,3 +1,4 @@
+import 'package:deepmind/pages/home.dart';
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -155,7 +156,11 @@ class _RegisterPage extends State<RegisterPage> {
                         userProvider.setAddLoading(true);
                         userProvider.register(username.text, password.text).then((value) {
                           userProvider.setAddLoading(false);
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                          userProvider.login(username.text, password.text).then((value){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+                              return HomePage(0);
+                            }));
+                          });
                         });
                       },
                       child: Container(

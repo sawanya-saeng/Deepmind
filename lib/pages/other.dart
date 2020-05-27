@@ -61,7 +61,7 @@ class _OtherPage extends State<OtherPage> {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "",
+                              userProvider.Name() == null ? '' : userProvider.Name(),
                               style:
                                   TextStyle(color: Colors.white, fontSize: 30),
                             ),

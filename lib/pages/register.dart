@@ -69,9 +69,7 @@ class _RegisterPage extends State<RegisterPage> {
             Expanded(
               child: Container(
                 child: Column(
-
                   children: <Widget>[
-
                     Container(
                       padding: EdgeInsets.only(top:30,left: 30),
                       alignment: Alignment.centerLeft,
@@ -80,7 +78,6 @@ class _RegisterPage extends State<RegisterPage> {
                         style: TextStyle(color: Colors.white, fontSize: 23),
                       ),
                     ),
-
                     Container(
                       margin: EdgeInsets.only(bottom: 15,left: 30,right: 30),
                       child: Row(
@@ -105,8 +102,6 @@ class _RegisterPage extends State<RegisterPage> {
                         ],
                       ),
                     ),
-
-
                     Container(
                       padding: EdgeInsets.only(top:30,left: 30),
                       alignment: Alignment.centerLeft,
@@ -115,7 +110,6 @@ class _RegisterPage extends State<RegisterPage> {
                         style: TextStyle(color: Colors.white, fontSize: 23),
                       ),
                     ),
-
                     Container(
                       margin: EdgeInsets.only(bottom: 15,left: 30,right: 30),
                       child: Row(
@@ -141,8 +135,6 @@ class _RegisterPage extends State<RegisterPage> {
                         ],
                       ),
                     ),
-
-
                     Container(
                       height: 30,
                     ),
@@ -190,7 +182,7 @@ class _RegisterPage extends State<RegisterPage> {
                     GestureDetector(
                       onTap: () {
                         userProvider.setAddLoading(true);
-                        userProvider.register(username.text, password.text).then((value) {
+                        userProvider.register(name.text, username.text, password.text).then((value) {
                           userProvider.setAddLoading(false);
                           userProvider.login(username.text, password.text).then((value){
                             Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){

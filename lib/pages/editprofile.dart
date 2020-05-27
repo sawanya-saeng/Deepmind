@@ -17,7 +17,6 @@ class _EditprofilePage extends State<EditprofilePage> {
   @override
   Widget build(BuildContext context) {
     double _safeTop = MediaQuery.of(context).padding.top;
-    double _safeBottom = MediaQuery.of(context).padding.bottom;
 
     final UserProvider userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
@@ -46,8 +45,6 @@ class _EditprofilePage extends State<EditprofilePage> {
                     style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                 ),
-
-
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pop();
@@ -65,11 +62,8 @@ class _EditprofilePage extends State<EditprofilePage> {
                 ),
               ],
             ),
-
-
             Expanded(
               child: Container(
-
                 child: Column(
                   children: <Widget>[
                     Expanded(
@@ -90,16 +84,13 @@ class _EditprofilePage extends State<EditprofilePage> {
                             alignment: Alignment.center,
                             padding: EdgeInsets.only(top: 30),
                             child: Text(
-                              'ตะหลิว',
+                              userProvider.Name(),
                               style: TextStyle(color: Colors.white, fontSize: 30),
                             ),
                           ),
                         ],
                       ),
                     ),
-
-
-
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -121,14 +112,11 @@ class _EditprofilePage extends State<EditprofilePage> {
                             style: TextStyle(color: Colors.white, fontSize: 25),
                           )),
                     ),
-
-
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                        userProvider.logout().then((value) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                        });
                       },
                       child: Container(
                           decoration: BoxDecoration(

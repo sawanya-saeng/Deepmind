@@ -15,6 +15,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
+  TextEditingController name = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
@@ -93,6 +94,41 @@ class _RegisterPage extends State<RegisterPage> {
                                   border: Border(
                                     bottom: BorderSide(color: Colors.white),
                                   )
+                              ),
+                              height: 45,
+                              child: TextField(
+                                controller: name,
+                                decoration: InputDecoration.collapsed(hintText: ""),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+
+                    Container(
+                      padding: EdgeInsets.only(top:30,left: 30),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'อีเมล์',
+                        style: TextStyle(color: Colors.white, fontSize: 23),
+                      ),
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.only(bottom: 15,left: 30,right: 30),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.only(left: 10),
+                              alignment: Alignment.centerLeft,
+                              decoration: BoxDecoration(
+                                  color: Color(0xff11BCB5),
+                                  border: Border(
+                                    bottom: BorderSide(color: Colors.white),
+                                  )
                                  ),
                               height: 45,
                               child: TextField(
@@ -148,7 +184,7 @@ class _RegisterPage extends State<RegisterPage> {
                     ),
 
                     Container(
-                      height:250,
+                      height:50,
                     ),
 
                     GestureDetector(

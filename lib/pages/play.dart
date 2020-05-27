@@ -6,6 +6,8 @@ import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:countdown_flutter/countdown_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PlayPage extends StatefulWidget {
   PlayPage({Key key, this.title}) : super(key: key);

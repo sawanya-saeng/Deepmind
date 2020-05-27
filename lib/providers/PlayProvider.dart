@@ -40,7 +40,7 @@ class PlayProvider extends ChangeNotifier {
 
   play() {
     this.game['status'] = true;
-    this.game['time'] = Duration(seconds: 1);
+    this.game['time'] = Duration(seconds: 5);
     notifyListeners();
   }
 

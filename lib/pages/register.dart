@@ -20,7 +20,6 @@ class _RegisterPage extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     double _safeTop = MediaQuery.of(context).padding.top;
-    double _safeBottom = MediaQuery.of(context).padding.bottom;
 
     final UserProvider userProvider = Provider.of<UserProvider>(context);
     return Scaffold(

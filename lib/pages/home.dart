@@ -5,16 +5,41 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'play.dart';
 import 'other.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
-  _HomePageState createState() => _HomePageState();
+  int pageIndex;
+  HomePage(this.pageIndex);
+  @override
+  _HomePageState createState() => _HomePageState(this.pageIndex);
 }
 
 int _currentIndex = 0;
+List<Widget> pages = [
+  PlayPage(),
+  OtherPage(),
+];
 
 class _HomePageState extends State<HomePage> {
+
+  int pageIndex;
+  _HomePageState(this.pageIndex);
   PageController _pageController;
+  final _auth = FirebaseAuth.instance;
+  bool isSignIn = false;
+
+  Future checkSignIn()async{
+    FirebaseUser user = await _auth.currentUser();
+    if(user == null){
+      setState(() {
+        isSignIn = false;
+      });
+    }else{
+      setState(() {
+        isSignIn = true;
+      });
+    }
+  }
 
   @override
   void initState() {

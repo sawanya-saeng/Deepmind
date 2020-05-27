@@ -1,8 +1,11 @@
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'login.dart';
 import 'editprofile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 class OtherPage extends StatefulWidget {
   OtherPage({Key key, this.title}) : super(key: key);
@@ -12,6 +15,13 @@ class OtherPage extends StatefulWidget {
   @override
   _OtherPage createState() => _OtherPage();
 }
+
+
+class IUser{
+  String name;
+  String image;
+}
+
 
 class _OtherPage extends State<OtherPage> {
   @override
@@ -51,7 +61,7 @@ class _OtherPage extends State<OtherPage> {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'ตะหลิว',
+                              "",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 30),
                             ),
@@ -106,7 +116,6 @@ class _OtherPage extends State<OtherPage> {
                           child: ListView(
                             padding: const EdgeInsets.all(0),
                             children: <Widget>[
-
                               Container(
                                 height: 160,
                                 padding: EdgeInsets.only(bottom: 8),
@@ -288,11 +297,6 @@ class _OtherPage extends State<OtherPage> {
                                   ],
                                 ),
                               ),
-
-                              
-                              
-                              
-
                               Container(
                                 height: 160,
                                 padding: EdgeInsets.only(bottom: 8),

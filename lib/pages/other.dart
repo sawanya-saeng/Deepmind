@@ -17,6 +17,7 @@ class OtherPage extends StatefulWidget {
 }
 
 
+
 class IUser{
   String name;
   String image;
@@ -50,6 +51,7 @@ class _OtherPage extends State<OtherPage> {
                         ),
                         height: 110,
                         alignment: Alignment.center,
+                        child: Image.asset('assets/username.png', height: 90,),
                       ),
                     ),
                     Expanded(
@@ -297,190 +299,6 @@ class _OtherPage extends State<OtherPage> {
                                   ],
                                 ),
                               ),
-                              Container(
-                                height: 160,
-                                padding: EdgeInsets.only(bottom: 8),
-                                color: Color(0xff11BCB5),
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      height: 45,
-                                      child: Row(
-                                        children: <Widget>[
-                                          Expanded(
-                                            flex: 2,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                border: Border(
-                                                    bottom: BorderSide(
-                                                        color: Colors.white),
-                                                    top: BorderSide(
-                                                        color: Colors.white)),
-                                              ),
-                                              alignment: Alignment.center,
-                                              height: 45,
-                                              child: Text(
-                                                'วันที่ 1',
-                                                style: TextStyle(
-                                                    color: Color(0xff098681),
-                                                    fontSize: 20),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            flex: 4,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Color(0xff098681),
-                                                border: Border(
-                                                    bottom: BorderSide(
-                                                        color: Colors.white),
-                                                    top: BorderSide(
-                                                        color: Colors.white)),
-                                              ),
-                                              alignment: Alignment.centerLeft,
-                                              padding:
-                                              EdgeInsets.only(left: 15),
-                                              height: 45,
-                                              child: Text(
-                                                '26 พฤษภาคม 2563',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 20),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        height: 45,
-                                        child: Column(
-                                          children: <Widget>[
-                                            Expanded(
-                                              child: Container(
-                                                padding: EdgeInsets.only(top: 5,bottom: 5),
-                                                child: Row(
-                                                  children: <Widget>[
-                                                    Expanded(
-                                                      flex: 2,
-                                                      child: Container(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        height: 45,
-                                                        child: Text(
-                                                          'ครั้งที่ 1',
-                                                          style: TextStyle(
-                                                              color:
-                                                              Colors.white,
-                                                              fontSize: 20),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: Container(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        padding: EdgeInsets.only(
-                                                            left: 15),
-                                                        height: 45,
-                                                        child: Container(
-                                                            decoration:
-                                                            BoxDecoration(shape: BoxShape.circle, color: Colors.white),
-                                                            height: 60,
-                                                            alignment: Alignment.center,
-                                                            child: Text('12', style: TextStyle(color:Color(0xffFF0000), fontSize: 20),
-                                                            )),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 2,
-                                                      child: Container(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        height: 45,
-                                                        child: Text(
-                                                          'แต้ม',
-                                                          style: TextStyle(
-                                                              color:
-                                                              Colors.white,
-                                                              fontSize: 20),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Container(
-                                                padding: EdgeInsets.only(top: 5,bottom: 5),
-                                                child: Row(
-                                                  children: <Widget>[
-                                                    Expanded(
-                                                      flex: 2,
-                                                      child: Container(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        height: 45,
-                                                        child: Text(
-                                                          'ครั้งที่ 2',
-                                                          style: TextStyle(
-                                                              color:
-                                                              Colors.white,
-                                                              fontSize: 20),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: Container(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        padding:
-                                                        EdgeInsets.only(
-                                                            left: 15),
-                                                        height: 45,
-                                                        child: Container(
-                                                            decoration:
-                                                            BoxDecoration(shape: BoxShape.circle, color:Color(0xffFF0000)),
-                                                            height: 60,
-                                                            alignment: Alignment.center,
-                                                            child: Text('20', style: TextStyle(color: Colors.white, fontSize: 20),
-                                                            )),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 2,
-                                                      child: Container(
-                                                        alignment:
-                                                        Alignment.center,
-                                                        height: 45,
-                                                        child: Text(
-                                                          'แต้ม',
-                                                          style: TextStyle(
-                                                              color:
-                                                              Colors.white,
-                                                              fontSize: 20),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-
-
 
                             ],
                           )),

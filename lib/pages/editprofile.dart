@@ -78,11 +78,14 @@ class _EditprofilePage extends State<EditprofilePage> {
                             ),
                             height: 150,
                             alignment: Alignment.center,
+                            child: Image.asset('assets/username.png', height: 130,),
+
                           ),
 
                           Container(
                             alignment: Alignment.center,
                             padding: EdgeInsets.only(top: 30),
+
                             child: Text(
                               userProvider.Name(),
                               style: TextStyle(color: Colors.white, fontSize: 30),

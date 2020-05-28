@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
 class PlayProvider extends ChangeNotifier {
+  final db = Firestore.instance;
+  final auth = FirebaseAuth.instance;
+
   Map<String, dynamic> game = {
     'status': false,
     'time': Duration(minutes: 2),
@@ -64,9 +69,21 @@ class PlayProvider extends ChangeNotifier {
 
   void reset() {
     this.game['score'] = 0;
+    this.game['time'] = Duration(minutes: 2);
+    notifyListeners();
   }
 
   int getScore() {
     return this.game['score'];
+  }
+
+  Future<void> saveScore() async {
+    final user = await auth.currentUser();
+
+    await db.collection("game").document(user.uid).setData({
+      'created_date': DateTime.now().millisecondsSinceEpoch,
+      'round': 1,
+      'score': this.game['score'],
+    });
   }
 }

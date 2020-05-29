@@ -1,3 +1,4 @@
+import 'package:deepmind/providers/StatProvider.dart';
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,9 @@ class _LoginPage extends State<LoginPage> {
     double _safeBottom = MediaQuery.of(context).padding.bottom;
 
     final UserProvider userProvider = Provider.of<UserProvider>(context);
+    final StatProvider statProvider = Provider.of<StatProvider>(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
         color: Color(0xff11BCB5),
         child: Column(
@@ -118,10 +121,11 @@ class _LoginPage extends State<LoginPage> {
                     GestureDetector(
                       onTap: () {
                         userProvider.login(_username.text, _password.text).then((value) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(0)) );
+                          statProvider.loadStat().then((value) {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(0)));
+                          });
                         });
                       },
-
                       child: Container(
                           decoration: BoxDecoration(
                               color: Color(0xff00807A),

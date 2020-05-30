@@ -28,7 +28,7 @@ class _LoginPage extends State<LoginPage> {
     final StatProvider statProvider = Provider.of<StatProvider>(context);
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: Container(
+      body: userProvider.loginStatus() ? Center(child: Container(child: CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Color(0xff11BCB5)),),alignment: Alignment.center,color: Color(0xff11BCB5)),) : Container(
         color: Color(0xff11BCB5),
         child: Column(
           children: <Widget>[
@@ -74,7 +74,6 @@ class _LoginPage extends State<LoginPage> {
                                 ),
                                 style: TextStyle(color: Colors.white, fontSize: 16),
                                   controller: _username,
-
                                 ),
                               ),
                             ),
@@ -106,10 +105,10 @@ class _LoginPage extends State<LoginPage> {
                                 height: 30,
                                 child: TextField(decoration: InputDecoration( hintText: "รหัสผ่าน", hintStyle: TextStyle(color: Color(0xffA1EFEB), fontSize: 16),
                                     border: InputBorder.none ,contentPadding: EdgeInsets.only(top: 10,bottom: 10)
-                                  // Added this
                                 ),
                                   style: TextStyle(color: Colors.white, fontSize: 16),
                                   controller: _password,
+                                  obscureText: true,
                                 ),
                               ),
                             ),
@@ -122,6 +121,8 @@ class _LoginPage extends State<LoginPage> {
                       onTap: () {
                         userProvider.login(_username.text, _password.text).then((value) {
                           statProvider.loadStat().then((value) {
+                            _username.clear();
+                            _password.clear();
                             Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(0)));
                           });
                         });

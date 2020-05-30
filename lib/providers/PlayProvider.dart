@@ -47,8 +47,6 @@ class PlayProvider extends ChangeNotifier {
       'yellow': false,
     };
 
-
-    setCountDownTime();
   }
 
   Map<String, dynamic> getGameStatus() {
@@ -118,6 +116,7 @@ class PlayProvider extends ChangeNotifier {
       default:
         this.game['time'] = Duration(minutes: 6);
     }
+    notifyListeners();
   }
 
   Future<int> getRound(String uniqueStr) async {

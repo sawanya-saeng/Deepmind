@@ -1,3 +1,5 @@
+import 'package:deepmind/main.dart';
+import 'package:deepmind/pages/home.dart';
 import 'package:deepmind/pages/other.dart';
 import 'package:deepmind/providers/UserProvider.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,8 @@ class _EditprofilePage extends State<EditprofilePage> {
 
     final UserProvider userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
-      body: Container(
+      resizeToAvoidBottomPadding: false,
+      body: userProvider.getUpdateStatus() ? Center(child: Container(child: CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Color(0xff11BCB5)),),alignment: Alignment.center,color: Color(0xff11BCB5)),) :Container(
         color: Color(0xff11BCB5),
         child: Column(
           children: <Widget>[
@@ -85,9 +88,9 @@ class _EditprofilePage extends State<EditprofilePage> {
                           Container(
                             alignment: Alignment.center,
                             padding: EdgeInsets.only(top: 30),
-
-                            child: Text(
-                              userProvider.Name(),
+                            child: TextField(
+                              textAlign: TextAlign.center,
+                              controller: userProvider.textFieldName(),
                               style: TextStyle(color: Colors.white, fontSize: 30),
                             ),
                           ),
@@ -96,10 +99,14 @@ class _EditprofilePage extends State<EditprofilePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => OtherPage()));
+                        userProvider.updateName().then((value) {
+                          userProvider.fetchMe().then((value) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage(1)));
+                          });
+                        });
                       },
                       child: Container(
                           decoration: BoxDecoration(

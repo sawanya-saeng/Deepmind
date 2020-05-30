@@ -26,7 +26,7 @@ class _RegisterPage extends State<RegisterPage> {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: userProvider.addLoading() ? CircularProgressIndicator(): Container(
+      body: userProvider.addLoading() ? Center(child: Container(child: CircularProgressIndicator(backgroundColor: Colors.white,valueColor: AlwaysStoppedAnimation<Color>(Color(0xff11BCB5)),),alignment: Alignment.center,color: Color(0xff11BCB5)),) : Container(
         color: Color(0xff11BCB5),
         child: Column(
           children: <Widget>[

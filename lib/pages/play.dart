@@ -59,6 +59,7 @@ class _PlayPage extends State<PlayPage> {
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
     final PlayProvider playProvider = Provider.of<PlayProvider>(context);
+    final StatProvider statProvider = Provider.of<StatProvider>(context);
     return Scaffold(
       body: Container(
         color: Color(0xff11BCB5),
@@ -165,6 +166,7 @@ class _PlayPage extends State<PlayPage> {
                           children: <Widget>[
                             !playProvider.isPlay() ? GestureDetector(
                               onTap: () {
+                                playProvider.setCountDownTime();
                                 playProvider.reset();
                                 playProvider.play();
                               },
@@ -187,7 +189,6 @@ class _PlayPage extends State<PlayPage> {
                                 onFinish: () {
                                   playProvider.stop();
                                   playProvider.saveScore();
-
                                   showDialog(
                                       context: context,
                                       builder: (context) {
@@ -254,7 +255,9 @@ class _PlayPage extends State<PlayPage> {
                                             ),
                                           ),
                                         );
-                                      });
+                                      }).then((value) {
+                                        statProvider.loadStat();
+                                  });
                                 },
                                 builder: (BuildContext ctx, String remaining) {
                                   return Container(

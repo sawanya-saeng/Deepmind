@@ -14,7 +14,6 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState(this.pageIndex);
 }
 
-int _currentIndex = 0;
 List<Widget> pages = [
   PlayPage(),
   OtherPage(),
@@ -44,8 +43,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
-    _currentIndex = 0;
+    _pageController = PageController(initialPage: this.pageIndex);
   }
 
   @override
@@ -95,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                       child: GestureDetector(
                         onTap: () {
                             setState(() {
-                              _currentIndex = 0;
+                              this.pageIndex = 0;
                               if (_pageController.hasClients) {
                                 _pageController.animateToPage(0,
                                   duration: const Duration(milliseconds: 100),
@@ -109,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width:3.0 ,color: Colors.white),
-                            color: _currentIndex == 0
+                            color: this.pageIndex == 0
                                 ? Color(0xff00746F)
                                 : Color(0xff11BCB5),
                           ),
@@ -131,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           playProvider.stop();
                            setState(() {
-                             _currentIndex = 1;
+                             this.pageIndex = 1;
                              if (_pageController.hasClients) {
                                _pageController.animateToPage(
                                  1,
@@ -146,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width:3.0 ,color: Colors.white),
-                            color: _currentIndex == 1
+                            color: this.pageIndex == 1
                                 ? Color(0xff00746F)
                                 : Color(0xff11BCB5),
                           ),

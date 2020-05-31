@@ -184,8 +184,9 @@ class _PlayPage extends State<PlayPage> {
                           children: <Widget>[
                             !playProvider.isPlay()
                                 ? GestureDetector(
-                                    onTap: () {
-                                      playProvider.setCountDownTime();
+                                    onTap: () async{
+                                      await playProvider.setCoolDownTime();
+                                      await playProvider.setCountDownTime();
                                       playProvider.reset();
                                       playProvider.play();
                                     },

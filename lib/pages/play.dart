@@ -258,7 +258,7 @@ class _PlayPage extends State<PlayPage> {
                                                                         .white),
                                                               ),
                                                               Text(
-                                                                  "เป็นเวลา ${playProvider.getCoolDown().toString()} วินาที",
+                                                                  "เป็นเวลา ${playProvider.getCoolDown().inSeconds.toString()} วินาที",
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .white)),

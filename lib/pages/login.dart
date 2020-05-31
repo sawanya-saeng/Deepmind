@@ -68,7 +68,7 @@ class _LoginPage extends State<LoginPage> {
                               child: Container(
                                 padding: EdgeInsets.only(left: 15),
                                 height: 30,
-                                child: TextField(decoration: InputDecoration( hintText: "ชื่อผู้ใช้", hintStyle: TextStyle(color: Color(0xffA1EFEB), fontSize: 16),
+                                child: TextField(decoration: InputDecoration( hintText: "อีเมล", hintStyle: TextStyle(color: Color(0xffA1EFEB), fontSize: 16),
                                   border: InputBorder.none ,contentPadding: EdgeInsets.only(top: 10,bottom: 10)
                                   // Added this
                                 ),

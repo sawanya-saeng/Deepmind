@@ -74,7 +74,7 @@ class _RegisterPage extends State<RegisterPage> {
                       padding: EdgeInsets.only(top:30,left: 30),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'ขื่อผู้ใช้',
+                        'ชื่อผู้ใช้',
                         style: TextStyle(color: Colors.white, fontSize: 23),
                       ),
                     ),
@@ -106,7 +106,7 @@ class _RegisterPage extends State<RegisterPage> {
                       padding: EdgeInsets.only(top:30,left: 30),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'อีเมล์',
+                        'อีเมล',
                         style: TextStyle(color: Colors.white, fontSize: 23),
                       ),
                     ),

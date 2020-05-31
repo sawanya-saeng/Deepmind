@@ -237,7 +237,7 @@ class _PlayPage extends State<PlayPage> {
                                                             Color(0xff00746F),
                                                         height: 60,
                                                         child: Text(
-                                                          'แต้มที่ได้ในครั้งนี้',
+                                                          ' ',
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white,

@@ -9,6 +9,7 @@ class PlayProvider extends ChangeNotifier {
   Map<String, dynamic> game = {
     'status': false,
     'time': Duration(minutes: 2),
+    'cooldown': Duration(minutes: 2),
     'score': 0,
     'blue': 0,
     'green': 0,
@@ -40,6 +41,7 @@ class PlayProvider extends ChangeNotifier {
     this.game['red'] = 0;
     this.game['status'] = false;
     this.game['time'] = Duration(minutes: 2);
+    this.game['cooldown'] = Duration(minutes: 2);
     this.numberStatus = {
       'blue': false,
       'red': false,
@@ -69,6 +71,10 @@ class PlayProvider extends ChangeNotifier {
 
   Duration getCountdown() {
     return this.game['time'];
+  }
+
+  Duration getCoolDown() {
+    return this.game['cooldown'];
   }
 
   void addPoint(int point) {
@@ -114,7 +120,27 @@ class PlayProvider extends ChangeNotifier {
         this.game['time'] = Duration(minutes: 5);
         break;
       default:
-        this.game['time'] = Duration(minutes: 6);
+        this.game['time'] = Duration(minutes: 15);
+    }
+    notifyListeners();
+  }
+  Future<void> setCoolDownTime() async{
+    final dayRound = await this.getDayRound();
+    switch (dayRound) {
+      case (1):
+        this.game['cooldown'] = Duration(seconds: 30);
+        break;
+      case (2):
+        this.game['cooldown'] = Duration(seconds: 30);
+        break;
+      case (3):
+        this.game['cooldown'] = Duration(seconds: 60);
+        break;
+      case (4):
+        this.game['cooldown'] = Duration(seconds: 60);
+        break;
+      default:
+        this.game['cooldown'] = Duration(minutes: 15);
     }
     notifyListeners();
   }

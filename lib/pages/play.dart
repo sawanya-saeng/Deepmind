@@ -56,6 +56,12 @@ class _PlayPage extends State<PlayPage> {
   ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
     final PlayProvider playProvider = Provider.of<PlayProvider>(context);
@@ -96,8 +102,8 @@ class _PlayPage extends State<PlayPage> {
                       child: Container(
                         child: GridView.count(
                           physics: NeverScrollableScrollPhysics(),
-                          padding: EdgeInsets.only(
-                              top: 70, left: 30, right: 30),
+                          padding:
+                              EdgeInsets.only(top: 70, left: 30, right: 30),
                           crossAxisCount: 2,
                           mainAxisSpacing: 10,
                           crossAxisSpacing: 10,
@@ -108,10 +114,16 @@ class _PlayPage extends State<PlayPage> {
                                 children: <Widget>[
                                   GestureDetector(
                                     onTap: () {
-                                      if (!playProvider.getNumberStatus(buttons[index]["name"]) && playProvider.isPlay()) {
-                                        playProvider.setNumberStatus(buttons[index]["name"], true);
-                                        playProvider.addPointToKey(buttons[index]["name"], buttons[index]["point"]);
-                                        new Timer(new Duration(seconds: 1), () {playProvider.setNumberStatus(
+                                      if (!playProvider.getNumberStatus(
+                                              buttons[index]["name"]) &&
+                                          playProvider.isPlay()) {
+                                        playProvider.setNumberStatus(
+                                            buttons[index]["name"], true);
+                                        playProvider.addPointToKey(
+                                            buttons[index]["name"],
+                                            buttons[index]["point"]);
+                                        new Timer(new Duration(seconds: 1), () {
+                                          playProvider.setNumberStatus(
                                               buttons[index]["name"], false);
                                         });
                                       }
@@ -119,9 +131,12 @@ class _PlayPage extends State<PlayPage> {
                                     child: AnimatedContainer(
                                         duration: Duration(milliseconds: 200),
                                         decoration: BoxDecoration(
-                                            color: playProvider.getNumberStatus(buttons[index]["name"])
-                                                ? Color(buttons[index]["optional"])
-                                                : Color(buttons[index]["primary"]),
+                                            color: playProvider.getNumberStatus(
+                                                    buttons[index]["name"])
+                                                ? Color(
+                                                    buttons[index]["optional"])
+                                                : Color(
+                                                    buttons[index]["primary"]),
                                             border: Border.all(
                                                 width: 5.0,
                                                 color: Colors.white),
@@ -138,7 +153,10 @@ class _PlayPage extends State<PlayPage> {
                                   IgnorePointer(
                                     child: AnimatedOpacity(
                                       duration: Duration(milliseconds: 200),
-                                      opacity: playProvider.getNumberStatus(buttons[index]["name"]) ? 1 : 0,
+                                      opacity: playProvider.getNumberStatus(
+                                              buttons[index]["name"])
+                                          ? 1
+                                          : 0,
                                       child: Container(
                                         padding: EdgeInsets.all(25),
                                         decoration: BoxDecoration(
@@ -164,129 +182,243 @@ class _PlayPage extends State<PlayPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            !playProvider.isPlay() ? GestureDetector(
-                              onTap: () {
-                                playProvider.setCountDownTime();
-                                playProvider.reset();
-                                playProvider.play();
-                              },
-                              child: Container(
-                                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(30))),
-                                  width: 250,
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'เริ่มเล่น',
-                                    style: TextStyle(
-                                        color: Color(0xff00807A), fontSize: 30),
-                                  )),
-                            ):Container(
-                              child: CountdownFormatted(
-                                duration: playProvider.getCountdown(),
-                                onFinish: () {
-                                  playProvider.stop();
-                                  playProvider.saveScore();
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          contentPadding: EdgeInsets.zero,
-                                          content: Container(
-                                            decoration: BoxDecoration(
-                                              color: Color(0xff00746F),
-                                              border: Border.all(
-                                                  width: 8.0, color: Color(0xff00746F)),
-                                            ),
-                                            alignment: Alignment.center,
-                                            height: 400,
-                                            width: 400,
-                                            child: Column(
-                                              children: <Widget>[
-                                                Container(
-                                                  alignment: Alignment.center,
-                                                  color: Color(0xff00746F),
-                                                  height: 60,
-                                                  child: Text(
-                                                    'แต้มที่ได้ในครั้งนี้',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 30),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    color: Colors.white,
-                                                    alignment: Alignment.center,
-                                                    child: Container(
-                                                        decoration: BoxDecoration(
-                                                            shape: BoxShape.circle,
-                                                            color: Color(0xffFF0000)),
-                                                        height: 150,
-                                                        alignment: Alignment.center,
-                                                        child: Text(
-                                                          playProvider.getScore().toString(),
-                                                          style: TextStyle(
-                                                              color: Colors.white,
-                                                              fontSize: 80),
-                                                        )),
-                                                  ),
-                                                ),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    playProvider.reset();
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                  child: Container(
-                                                    alignment: Alignment.center,
+                            !playProvider.isPlay()
+                                ? GestureDetector(
+                                    onTap: () {
+                                      playProvider.setCountDownTime();
+                                      playProvider.reset();
+                                      playProvider.play();
+                                    },
+                                    child: Container(
+                                        padding: EdgeInsets.only(
+                                            top: 10, bottom: 10),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(30))),
+                                        width: 250,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          'เริ่มเล่น',
+                                          style: TextStyle(
+                                              color: Color(0xff00807A),
+                                              fontSize: 30),
+                                        )),
+                                  )
+                                : Container(
+                                    child: CountdownFormatted(
+                                      duration: playProvider.getCountdown(),
+                                      onFinish: () async {
+                                        playProvider.stop();
+                                        playProvider.saveScore();
+                                        await showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                contentPadding: EdgeInsets.zero,
+                                                content: Container(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0xff00746F),
-                                                    height: 60,
-                                                    child: Text(
-                                                      'ตกลง',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 30),
-                                                    ),
+                                                    border: Border.all(
+                                                        width: 8.0,
+                                                        color:
+                                                            Color(0xff00746F)),
+                                                  ),
+                                                  alignment: Alignment.center,
+                                                  height: 400,
+                                                  width: 400,
+                                                  child: Column(
+                                                    children: <Widget>[
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        color:
+                                                            Color(0xff00746F),
+                                                        height: 60,
+                                                        child: Text(
+                                                          'แต้มที่ได้ในครั้งนี้',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 30),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Container(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Container(
+                                                              child: Column(
+                                                            children: <Widget>[
+                                                              Text(
+                                                                "ให้ผู้เล่นรับรู้ว่ามีความร้สึกแบบใดในใจ",
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                              Text(
+                                                                  "เป็นเวลา ${playProvider.getCoolDown().toString()} วินาที",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                              Text(
+                                                                  "โดยให้ทำภายใจ ไม่ต้องกดปุ่ม",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white)),
+                                                              Spacer(),
+                                                              Container(
+                                                                child:
+                                                                    CountdownFormatted(
+                                                                  duration: playProvider.getCoolDown(),
+                                                                  onFinish: () {
+                                                                    Navigator.of(
+                                                                            context)
+                                                                        .pop();
+                                                                  },
+                                                                  builder: (BuildContext
+                                                                          context,
+                                                                      String
+                                                                          time) {
+                                                                    return Container(
+                                                                      child: Text(
+                                                                          'เหลือเวลาอีก: $time',
+                                                                          style:
+                                                                              TextStyle(color: Colors.white)),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          )),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                        statProvider.loadStat();
-                                  });
-                                },
-                                builder: (BuildContext ctx, String remaining) {
-                                  return Container(
-                                      padding: EdgeInsets.only(top: 10, bottom: 10),
-                                      decoration: BoxDecoration(
-                                          color: Color(0xff00807A),
-                                          borderRadius:
-                                          BorderRadius.all(Radius.circular(30))),
-                                      width: 250,
+                                              );
+                                            });
+                                        showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                contentPadding: EdgeInsets.zero,
+                                                content: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xff00746F),
+                                                    border: Border.all(
+                                                        width: 8.0,
+                                                        color:
+                                                            Color(0xff00746F)),
+                                                  ),
+                                                  alignment: Alignment.center,
+                                                  height: 400,
+                                                  width: 400,
+                                                  child: Column(
+                                                    children: <Widget>[
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        color:
+                                                            Color(0xff00746F),
+                                                        height: 60,
+                                                        child: Text(
+                                                          'แต้มที่ได้ในครั้งนี้',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 30),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Container(
+                                                          color: Colors.white,
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Container(
+                                                              decoration: BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color: Color(
+                                                                      0xffFF0000)),
+                                                              height: 150,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              child: Text(
+                                                                playProvider
+                                                                    .getScore()
+                                                                    .toString(),
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        80),
+                                                              )),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          playProvider.reset();
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        child: Container(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          color:
+                                                              Color(0xff00746F),
+                                                          height: 60,
+                                                          child: Text(
+                                                            'ตกลง',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 30),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+                                            }).then((value) {
+                                          statProvider.loadStat();
+                                        });
+                                      },
+                                      builder:
+                                          (BuildContext ctx, String remaining) {
+                                        return Container(
+                                            padding: EdgeInsets.only(
+                                                top: 10, bottom: 10),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xff00807A),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(30))),
+                                            width: 250,
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              remaining,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 30),
+                                            ));
+                                      },
+                                    ),
+                                  ),
+                            playProvider.isPlay()
+                                ? GestureDetector(
+                                    onTap: () {
+                                      playProvider.stop();
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(top: 10),
                                       alignment: Alignment.center,
-                                      child: Text(
-                                        remaining,
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 30),
-                                      ));
-                                },
-                              ),
-                            ),
-                            playProvider.isPlay() ? GestureDetector(
-                              onTap: () {
-                                playProvider.stop();
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(top: 10),
-                                alignment: Alignment.center,
-                                child: Icon(Icons.replay,
-                                    color: Colors.white, size: 50),
-                              ),
-                            ):Container()
+                                      child: Icon(Icons.replay,
+                                          color: Colors.white, size: 50),
+                                    ),
+                                  )
+                                : Container()
                           ],
                         )),
                   ],
@@ -298,5 +430,4 @@ class _PlayPage extends State<PlayPage> {
       ),
     );
   }
-
 }
